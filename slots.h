@@ -1,11 +1,6 @@
 #ifndef SLOTS_H
 #define SLOTS_H
 
-#include <iostream>
-#include <string>
-
-using namespace std;
-
 class slots
 {
     private:
