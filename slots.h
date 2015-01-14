@@ -1,5 +1,7 @@
 #ifndef SLOTS_H
 #define SLOTS_H
+#include <iostream>
+using namespace std;
 
 class slots
 {
