@@ -48,13 +48,22 @@ void slots::wagerSetup()
 void slots::spin()
 {
     cout << endl << "Spinning!" << endl << endl;
-    this->slotOne = rand() % 6 + 1;
+    const bool winner = ( rand() % 100 ) < 20; // 20 % odds (roughly)
+    if (winner)
+    {
+       this->slotOne = this->slotTwo = this->slotThree = rand() % 6 + 1;  
+    }
+    else
+    {
+       do
+       {
+            this->slotOne = rand() % 6 + 1;    
+            this->slotTwo = rand() % 6 + 1;    
+            this->slotThree = rand() % 6 + 1;    
+       } while ( slotOne == slotTwo && slotTwo == slotThree );
+    }
     this->oneFruit = spinTOfruit(this->slotOne);
-    
-    this->slotTwo = rand() % 6 + 1;
     this->twoFruit = spinTOfruit(this->slotTwo);
-    
-    this->slotThree = rand() % 6 + 1;
     this->threeFruit = spinTOfruit(this->slotThree);
 }
 
