@@ -67,32 +67,11 @@ void slots::spin()
     this->threeFruit = spinTOfruit(this->slotThree);
 }
 
+
 string slots::spinTOfruit(int currentSlot)
 {
-    if(currentSlot == 1)
-    {
-        return "apple";
-    }
-    else if(currentSlot == 2)
-    {
-        return "orange";
-    }
-    else if(currentSlot == 3)
-    {
-        return "cherry";
-    }
-    else if(currentSlot == 4)
-    {
-        return "strawberry";
-    }
-    else if(currentSlot == 5)
-    {
-        return "lemon";
-    }
-    else if(currentSlot == 6)
-    {
-        return "banana";
-    }
+    string fruits [] = {"apple", "orange", "cherry", "strawberry", "lemon", "banana"};
+    return fruits[currentSlot - 1];
 }
 
 void slots::spinOutput()
