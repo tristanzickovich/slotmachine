@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
-#include <unistd.h>  //doesn't work on windows
+#include <unistd.h>
 #include <ctime>
 #include <climits>
 #include "slots.h"
@@ -10,7 +10,7 @@ using namespace std;
 slots::slots()
  : welcome("***TRISTAN'S TREASURE SLOTS***"), wager(0), tokens(100)
  {}
- 
+
 void slots::wagerSetup()
 {
     int wagerAmount;
@@ -31,7 +31,7 @@ void slots::wagerSetup()
             << endl;
         }
         else if(wagerAmount < 1){
-            cout << endl << "Invalid amount. Please wager at least 1 token." 
+            cout << endl << "Invalid amount. Please wager at least 1 token."
             << endl << endl;
         }
         else
@@ -39,27 +39,27 @@ void slots::wagerSetup()
             validWager = true;
         }
     }
-    
+
     this->wager = wagerAmount;
     cout << string(50, '\n');
     cout << "Wagering " << wagerAmount << " Token(s). Good Luck!" << endl;
 }
- 
+
 void slots::spin()
 {
     cout << endl << "Spinning!" << endl << endl;
     const bool winner = ( rand() % 100 ) < 20; // 20 % odds (roughly)
     if (winner)
     {
-       this->slotOne = this->slotTwo = this->slotThree = rand() % 6 + 1;  
+       this->slotOne = this->slotTwo = this->slotThree = rand() % 6 + 1;
     }
     else
     {
        do
        {
-            this->slotOne = rand() % 6 + 1;    
-            this->slotTwo = rand() % 6 + 1;    
-            this->slotThree = rand() % 6 + 1;    
+            this->slotOne = rand() % 6 + 1;
+            this->slotTwo = rand() % 6 + 1;
+            this->slotThree = rand() % 6 + 1;
        } while ( slotOne == slotTwo && slotTwo == slotThree );
     }
     this->oneFruit = spinTOfruit(this->slotOne);
@@ -108,7 +108,7 @@ void slots::spinOutput()
         usleep(2000000);
         if(i == 3)
         {
-            usleep(2000000);
+            usleep(1000000);
             one = oneFruit;
             cout << string(50, '\n');
         }
@@ -180,4 +180,11 @@ void slots::run_slots()
     {
         cout << "No tokens remaining. You Lose." << endl;
     }
+}
+
+int main()
+{
+    slots play;
+    play.run_slots();
+    return 0;
 }
